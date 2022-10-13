@@ -21,7 +21,7 @@ Curtin ISEC3004 Assingment 1, Test Group 16 2022
 
 #The admin login here is admin123 and the password is new123
 
-# How to exploit Nosql Injection
+# How to exploit Nosql Injection vulnerability
 
 #Inorder to exploit this web application you need to install a tool called burpsuite communicty edition. 
 https://portswigger.net/burp/communitydownload. This will act as the middle man between the server and the client requests and allow the user to intercept and direct the requests. **It is important to note that this is simply a tool that helps with intercepts and not a third party program used for exploitation as we must povide the payloads ourselves and perfomr the injection based on feedback.**
