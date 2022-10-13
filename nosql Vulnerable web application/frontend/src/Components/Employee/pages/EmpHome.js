@@ -4,8 +4,6 @@ import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import { width } from "@mui/system";
 
-// import '../components/css/table.css';
-
 const EmpHome = () => {
   return (
     <>
@@ -28,15 +26,17 @@ const EmpHome = () => {
               onClick={() => {
                 window.location.href = "/userprofile";
               }}
+              //Navigation for Profile View 
             >
               User Profile
             </Button>
-
+          
             <Button
               variant="contained"
               onClick={() => {
                 window.location.href = "/empregister";
               }}
+              //Navigation for user Registration
             >
               User Registration
             </Button>
@@ -47,7 +47,9 @@ const EmpHome = () => {
         <div style={{position:'absolute', marginTop:'4.5%'}}>
 
         
-      
+      {/* Table for employee details */}
+
+    
         <table class="table table-hover" id = "leavedash" style={{width:'1220px',   textAlign:"center"}} >
                     <thead >
                 <tr style={{textAlign:'center', backgroundColor:'#1CAF9A'}}>
@@ -67,7 +69,7 @@ const EmpHome = () => {
                 </thead>
                
                 <tbody >
-                
+                {/* All employee Deatails are Hard Coded, */}
                         <tr style={{height:"50px", textAlign:"center"}}>
                           <th scope="row">1</th>
                           <td>Emp01</td>

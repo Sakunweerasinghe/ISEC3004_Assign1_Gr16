@@ -38,6 +38,8 @@ const Employee = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    //validation for User Registreation
+
     if (inputs.titleName === "") {
       alert("Title should not be empty");
     } else if (inputs.empid === "") {
@@ -70,11 +72,13 @@ const Employee = () => {
       axios
         .post("http://localhost:8400/employee/add", inputs)
         .then((res) => {
+          //excution is successfully next line will execuite
           alert("Added Successfully!!!");
           setInputs("");
           // setUploadedProfilePath("");
           window.location.reload();
         })
+        //credential is wrong this code will execuite
         .catch(function (error) {
           if (inputs.empPhone.type !== Number) {
             alert("Invalid type of contact number");
@@ -98,7 +102,7 @@ const Employee = () => {
           <Stack direction="column" spacing={2} alignItems="center">
             <Avatar sx={{ width: 200, height: 200 }} />
 
-
+{/* Here we can register the all Employee details */}
           </Stack>
           <form>
             <Stack direction="column" spacing={4}>

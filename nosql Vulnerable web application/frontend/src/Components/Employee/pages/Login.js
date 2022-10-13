@@ -18,7 +18,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+//here we are checking the employee id 
     if (inputs.empid === "") {
       alert("Employee ID should not be empty");
     } else if (inputs.empPwd === "") {

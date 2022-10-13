@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 var uniqueValidator = require("mongoose-unique-validator");
 
+
+//making the collection name for the fields for mongoDB
 const employeeSchema = new mongoose.Schema({
   titleName: { type: String, required: true },
   empid: { type: String, required: true, unique: true },

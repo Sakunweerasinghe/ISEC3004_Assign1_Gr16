@@ -1,8 +1,9 @@
+/* All login Page Css are coded Here */
+
 .login_container {
   width: 100%;
   min-width: 100vh;
   background:url("../Images/payroll.png");
-  /* background: url('./components/Images/loginbackg.jpg'); */
   display: flex;
   align-items: center;
   justify-content: center;

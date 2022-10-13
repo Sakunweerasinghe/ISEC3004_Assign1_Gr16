@@ -31,13 +31,12 @@ router.post("/employee/add", async (req, res) => {
   empName = empName.charAt(0).toUpperCase() + empName.slice(1).toLowerCase();
   empadd = empadd.charAt(0).toUpperCase() + empadd.slice(1).toLowerCase();
   nic = nic.toUpperCase();
-  // const hashedPassword = await bcrypt.hash(req.body.empPwd, 12);
 
   const newEmployee = new Employee({
     titleName: req.body.titleName,
     empid: req.body.empid,
     empName: empName,
-    // empPwd: hashedPassword,
+    /* Not encrypted Password*/
     empPwd: req.body.empPwd,
     empadd: empadd,
     empPhone: req.body.empPhone,
@@ -65,8 +64,7 @@ router.post("/employee/add", async (req, res) => {
   }
 });
 
-//get
-
+//get function from the database
 router.get("/employee/show", (req, res) => {
   Employee.find().exec((err, Employee) => {
     if (err) {
@@ -152,7 +150,7 @@ router.patch("/employee/edit/:id", async (req, res) => {
   }
 });
 
-//delete
+//delete user entry
 router.delete("/employee/delete/:id", async (req, res) => {
   const { id } = req.params;
   try {
