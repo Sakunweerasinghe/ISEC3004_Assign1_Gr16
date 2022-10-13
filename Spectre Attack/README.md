@@ -26,5 +26,4 @@ length - length of char *
 We're putting text Putting 'This is the Secret Withdrawn' in memory, in memory and then we're trying to read it using exploit. If system is vulnerable, you'll see same text in output, read from memory.
 
 
-
-
+# this is the hardware Bug,So we dont have software patchs we talked about in the presentation.
