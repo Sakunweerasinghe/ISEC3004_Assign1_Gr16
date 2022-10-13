@@ -1,0 +1,111 @@
+// Vulnerable Code
+app.post('/', function(req, res) {
+    User.findOne({username: req.body.username, password: req.body.password}, function (err, username) {
+        if (err) {
+            return res.render('index', {message: err.message});
+        }
+
+        if(!username) {
+            return res.render('index', {message: 'Sorry!'});
+        }
+
+        return res.render('index', {message: 'Welcoem back ' +username.name + '!!!'});
+    });
+});
+
+
+
+
+
+//login
+router.post("/home", async (req, res) => {
+  const { empid, empPwd } = req.body;
+  try {
+    const oldEmp = await Employee.findOne({ empid: empid });
+
+      if (empid === oldEmp.empid) {
+        if (empPwd === oldEmp.empPwd) {
+          return res.status(200).json(oldEmp);
+        }
+      }else {
+        res.status(400).json({ message: "Incorrect credentials" });
+      }
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+
+});
+
+
+//Vulnerable login
+router.post("/home", async (req, res) => {
+  const {empid, empPwd } = req.body;
+
+    const oldEmp = await Employee.findOne({ empid: empid, empPwd : empPwd });
+
+      if (empid === oldEmp.empid) {
+          return res.status(200).json(oldEmp);
+      }else {
+        res.status(400).json({ message: "Incorrect credentials" });
+      }
+
+});
+
+
+
+//Partial fix login
+router.post("/home", async (req, res) => {
+  const {empid, empPwd } = req.body;
+
+    const oldEmp = await Employee.findOne({ empid: String(empid), empPwd : String(empPwd) });
+
+      if (empid === oldEmp.empid) {
+          return res.status(200).json(oldEmp);
+      }else {
+        res.status(400).json({ message: "Incorrect credentials" });
+      }
+
+});
+
+//Full fix login   String and try catch
+router.post("/home", async (req, res) => {
+  const {empid, empPwd } = req.body;
+
+  try {
+    const oldEmp = await Employee.findOne({ empid: String(empid), empPwd : String(empPwd) });
+
+      if (empid === oldEmp.empid) {
+          return res.status(200).json(oldEmp);
+      }else {
+        res.status(400).json({ message: "Incorrect credentials" });
+      }
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+
+});
+
+
+//Full fix login with encryption
+router.post("/home", async (req, res) => {
+  const { empid, empPwd } = req.body;
+  try {
+    const oldEmp = await Employee.findOne({ empid: empid });
+
+      const isPasswordCorrect = await bcrypt.compare(empPwd, oldEmp.empPwd);
+
+      if (!isPasswordCorrect) {
+        res.status(400).json({ message: "Incorrect credentials" });
+      } else {
+        if (empid === oldEmp.empid) {
+          return res.status(200).json(oldEmp);
+        } else {
+          res.status(400).json({ message: "Incorrect credentials" });
+        }
+      }
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+
+});
+
