@@ -7,4 +7,4 @@ Follow instructions in the readme file in the main branch. As the program is pat
 
 Nosql Web Application Patch1 with Strings was patched by converting all user inputs to String. This will allow for input sanitization where user inputs are not directly used.
 
-
+Nosql Web Application Patch2 used encryption of the password to ensure input sanitization
